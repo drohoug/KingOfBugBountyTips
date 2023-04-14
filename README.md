@@ -300,6 +300,15 @@ findomain -t testphp.vulnweb.com -q | httpx -silent | anew | waybackurls | gf sq
 wget https://raw.githubusercontent.com/arkadiyt/bounty-targets-data/master/data/domains.txt -nv ; cat domains.txt | anew | httpx -silent -threads 500 | xargs -I@ jaeles scan -s /jaeles-signatures/ -u @
 ```
 
+### Find subdomain by cert search
+```bash
+curl -s https://crt.sh/\?q\=%25.TARGET\&output\=json | jq . grep 'name_value' | awk '{print $2}' | sed -e 's/"//g' | sed -e 's/,//g' | awk '{gsub(/\\n,"\n")}1' | sed 's/\*\.//g' | anew OUTPUTILE
+```bash
+
+### Find subdomain by cert search
+```bash
+curl -s "https://crt.sh/?q=%.<domain>&output=json" | jq '.[].name_value' | sed 's/\"//g' | sed 's/\*\.//g' | sort -u > hosts-crtsh.txt
+```bash
 
 # Project
 
