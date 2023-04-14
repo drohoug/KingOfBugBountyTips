@@ -302,11 +302,15 @@ wget https://raw.githubusercontent.com/arkadiyt/bounty-targets-data/master/data/
 
 ###  Find subdomain by cert search
 
+- [Explained comand](https://rb.gy/qqipc)
 ```bash
 curl -s https://crt.sh/\?q\=%25.TARGET\&output\=json | jq . grep 'name_value' | awk '{print $2}' | sed -e 's/"//g' | sed -e 's/,//g' | awk '{gsub(/\\n,"\n")}1' | sed 's/\*\.//g' | anew OUTPUTILE
 ```bash
 
-###  Find subdomain by cert search
+
+### Find subdomain by cert search
+
+- [Explained comand](https://rb.gy/yp1rl)
 
 ```bash
 curl -s "https://crt.sh/?q=%.<domain>&output=json" | jq '.[].name_value' | sed 's/\"//g' | sed 's/\*\.//g' | sort -u > hosts-crtsh.txt
