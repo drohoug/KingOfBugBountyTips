@@ -300,30 +300,17 @@ findomain -t testphp.vulnweb.com -q | httpx -silent | anew | waybackurls | gf sq
 wget https://raw.githubusercontent.com/arkadiyt/bounty-targets-data/master/data/domains.txt -nv ; cat domains.txt | anew | httpx -silent -threads 500 | xargs -I@ jaeles scan -s /jaeles-signatures/ -u @
 ```
 
-### Find subdomain by cert search
+###  Find subdomain by cert search
+
 ```bash
 curl -s https://crt.sh/\?q\=%25.TARGET\&output\=json | jq . grep 'name_value' | awk '{print $2}' | sed -e 's/"//g' | sed -e 's/,//g' | awk '{gsub(/\\n,"\n")}1' | sed 's/\*\.//g' | anew OUTPUTILE
 ```bash
 
-### Find subdomain by cert search
+###  Find subdomain by cert search
+
 ```bash
 curl -s "https://crt.sh/?q=%.<domain>&output=json" | jq '.[].name_value' | sed 's/\"//g' | sed 's/\*\.//g' | sort -u > hosts-crtsh.txt
 ```bash
-
-# Project
-
-[![made-with-Go](https://img.shields.io/badge/Made%20with-Go-1f425f.svg)](http://golang.org)
-[![made-with-bash](https://img.shields.io/badge/Made%20with-Bash-1f425f.svg)](https://www.gnu.org/software/bash/)
-[![Open Source? Yes!](https://badgen.net/badge/Open%20Source%20%3F/Yes%21/blue?icon=github)](https://github.com/Naereen/badges/)
-[![The King](https://aleen42.github.io/badges/src/twitter.svg)](https://twitter.com/ofjaaah)
-[![The King](https://aleen42.github.io/badges/src/twitter.svg)](https://twitter.com/zeroc00I)
-[![The King](https://aleen42.github.io/badges/src/twitter.svg)](https://twitter.com/willxenoo)
-[![Telegram](https://patrolavia.github.io/telegram-badge/chat.png)](https://t.me/KingOfTipsBugBounty)
-
-
-
-
-<a href="https://www.buymeacoffee.com/OFJAAAH" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 20px !important;width: 50px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a>
 
 
 
